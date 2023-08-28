@@ -11,8 +11,10 @@ function getPhoneData(phonesDetails,isShowAll){
    cardContainer.innerHTML = ''
    const numberOfPhones = phonesDetails.data.length
    let numberOfPhoneDisplay = phonesDetails.data
-   console.log(isShowAll);
-   let numberOfPhoneDisplays = numberOfPhoneDisplay.slice(0,6)
+  
+  if (!isShowAll) {
+    numberOfPhoneDisplay = numberOfPhoneDisplay.slice(0,6)
+  } 
   
    if (numberOfPhones > 6) {
     const showAllButton = document.getElementById('showAllButton') 
@@ -22,7 +24,7 @@ function getPhoneData(phonesDetails,isShowAll){
     showAllButton.classList.add('hidden')
    }
 
-   numberOfPhoneDisplays.forEach(phones => {
+   numberOfPhoneDisplay.forEach(phones => {
     const PhoneBrands = phones.brand
     const phoneNames = phones.phone_name
     const phoneImage = phones.image
